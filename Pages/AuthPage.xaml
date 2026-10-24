@@ -1,0 +1,77 @@
+<Page x:Class="MeryanovPayment.Pages.AuthPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Авторизация"
+      Background="{DynamicResource ContentBackgroundBrush}">
+
+    <Grid>
+        <Border Width="420" Height="Auto" 
+                Background="{DynamicResource ContentBackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1"
+                CornerRadius="12"
+                Padding="32"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Effect="{x:Null}">
+
+            <StackPanel>
+                <TextBlock Text="Вход в систему" 
+                           Style="{StaticResource PageTitle}"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,24"/>
+
+                <!-- Логин -->
+                <TextBlock Text="Логин" Style="{StaticResource AppText}" Margin="0,0,0,4"/>
+                <TextBox x:Name="TxtLogin" 
+                         Style="{StaticResource AppTextBox}"
+                         ToolTip="Введите логин"
+                         Tag="Логин"/>
+
+                <!-- Пароль -->
+                <TextBlock Text="Пароль" Style="{StaticResource AppText}" Margin="0,16,0,4"/>
+                <PasswordBox x:Name="TxtPassword" 
+                             Style="{StaticResource AppPasswordBox}"
+                             ToolTip="Введите пароль"/>
+
+                <!-- Капча (появляется после ошибок) -->
+                <StackPanel x:Name="CaptchaPanel" Visibility="Collapsed" Margin="0,16,0,0">
+                    <TextBlock Text="Введите код с картинки" Style="{StaticResource AppText}" Margin="0,0,0,4"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="ImgCaptcha" Width="180" Height="50" Margin="0,0,10,0"
+                               Stretch="Fill" Cursor="Hand" MouseLeftButtonUp="ImgCaptcha_Click"
+                               ToolTip="Нажмите, чтобы обновить капчу"/>
+                        <TextBox x:Name="TxtCaptcha" 
+                                 Style="{StaticResource AppTextBox}"
+                                 Width="120"
+                                 ToolTip="Код с картинки"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <TextBlock x:Name="TxtError" 
+                           Foreground="{StaticResource BrushRed}"
+                           FontFamily="{StaticResource AppFont}"
+                           FontSize="13"
+                           TextWrapping="Wrap"
+                           Margin="0,12,0,0"
+                           Visibility="Collapsed"/>
+
+                <Button x:Name="BtnLogin" 
+                        Content="Войти" 
+                        Style="{StaticResource PrimaryButton}"
+                        Margin="0,24,0,0"
+                        Click="BtnLogin_Click"/>
+
+                <Button Content="Забыли пароль?" 
+                        Style="{StaticResource SecondaryButton}"
+                        Margin="0,12,0,0"
+                        Click="BtnForgotPassword_Click"/>
+
+                <Button Content="Регистрация" 
+                        Style="{StaticResource SecondaryButton}"
+                        Margin="0,12,0,0"
+                        Click="BtnRegister_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

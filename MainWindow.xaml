@@ -1,0 +1,77 @@
+<Window x:Class="MeryanovPayment.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Система учёта платежей — Meryanov"
+        Height="700" Width="1100"
+        MinHeight="600" MinWidth="900"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource WindowBackgroundBrush}"
+        Loaded="Window_Loaded"
+        Closing="Window_Closing">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+
+        <!-- Верхняя панель -->
+        <Border Grid.Row="0" Background="{DynamicResource HeaderBackgroundBrush}">
+            <Grid>
+                <Button x:Name="BtnBack" 
+                        Content="← Назад" 
+                        Style="{StaticResource SecondaryButton}"
+                        HorizontalAlignment="Left"
+                        Margin="10,0,0,0"
+                        Width="100"
+                        Click="BtnBack_Click"
+                        Visibility="Collapsed"/>
+
+                <TextBlock x:Name="TxtPageTitle"
+                           Text="Авторизация"
+                           Style="{StaticResource PageTitle}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="0"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                    <Button x:Name="BtnTheme" 
+                            Content="🌓 Тема" 
+                            Style="{StaticResource SecondaryButton}"
+                            Width="100"
+                            Margin="0,0,8,0"
+                            Click="BtnTheme_Click"/>
+                    <TextBlock x:Name="TxtCurrentUser"
+                               Style="{StaticResource AppText}"
+                               VerticalAlignment="Center"
+                               Margin="0,0,10,0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Основной контент — Frame -->
+        <Frame x:Name="MainFrame" 
+               Grid.Row="1" 
+               NavigationUIVisibility="Hidden"
+               Background="{DynamicResource ContentBackgroundBrush}"/>
+
+        <!-- Нижняя панель -->
+        <Border Grid.Row="2" Background="{DynamicResource FooterBackgroundBrush}">
+            <Grid>
+                <TextBlock Text="4ISIP-523 | Meryanov | Учебная практика"
+                           Style="{StaticResource AppText}"
+                           VerticalAlignment="Center"
+                           Margin="15,0,0,0"
+                           Foreground="{DynamicResource SecondaryTextBrush}"/>
+
+                <TextBlock x:Name="DateTimeNow"
+                           Style="{StaticResource AppText}"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Margin="0,0,15,0"
+                           FontWeight="SemiBold"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

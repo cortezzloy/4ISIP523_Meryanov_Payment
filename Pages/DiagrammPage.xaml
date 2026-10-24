@@ -1,0 +1,44 @@
+<Page x:Class="MeryanovPayment.Pages.DiagrammPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:charts="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
+      Title="Диаграмма"
+      Background="{DynamicResource ContentBackgroundBrush}">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- По методичке: выбор пользователя, типа диаграммы, экспорт -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5">
+            <TextBlock Text="Пользователь:" VerticalAlignment="Center" Margin="0,0,8,0"
+                       FontFamily="Open Sans" FontSize="14"/>
+            <ComboBox x:Name="CmbUser" Width="200" Height="35"
+                      DisplayMemberPath="FIO"
+                      SelectionChanged="UpdateChart"
+                      Margin="0,0,16,0"/>
+
+            <TextBlock Text="Тип диаграммы:" VerticalAlignment="Center" Margin="0,0,8,0"
+                       FontFamily="Open Sans" FontSize="14"/>
+            <ComboBox x:Name="CmbDiagram" Width="150" Height="35"
+                      SelectionChanged="UpdateChart"
+                      Margin="0,0,16,0"/>
+
+            <Button Content="Экспорт в Word" Height="35" Width="140" Margin="0,0,8,0"
+                    Click="BtnExportWord_Click"/>
+            <Button Content="Экспорт в Excel" Height="35" Width="140"
+                    Click="BtnExportExcel_Click"/>
+        </StackPanel>
+
+        <!-- По методичке: WindowsFormsHost + Chart -->
+        <WindowsFormsHost Grid.Row="1" Margin="5">
+            <charts:Chart x:Name="ChartPayments">
+                <charts:Chart.Legends>
+                    <charts:Legend/>
+                </charts:Chart.Legends>
+            </charts:Chart>
+        </WindowsFormsHost>
+    </Grid>
+</Page>
